@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+		
+		#div1 {
+			width: 600px;
+			height: 40px;
+			margin: 50px auto;
+		}
+		
+		ul {
+			width: 100%;
+			height: 100%;
+		}
+		
+		ul li {
+			width: 60px;
+			height: 100%;
+			float: left;
+			line-height: 40px;
+			text-align: center;
+			background: #ccc;
+			cursor: pointer;
+			margin-left: 1px;
+		}
+		
+		.active {
+			border-bottom: 1px solid #f90;
+			color: #FF9900;
+		}
+		.bottom{
+			
+		}
+	</style>
+
+	<body>
+		<div id="div1">
+			<ul>
+				<li @click="addClass(index)" :class="{active:index==num}" v-for="(v,index) in list">{{index}}</li>
+			</ul>
+			<div class="bottom">
+				<component :is='currentView' keep-alive></component>
+			</div>
+		</div>
+	</body>
+
+</html>
+<script type="text/javascript" src="vue.js"></script>
+<script type="text/javascript">
+	var tab01 = Vue.extend({
+		template: '<p>This is tab01</p>'
+	})
+	var tab02 = Vue.extend({
+		template: '<p>This is tab02</p>'
+	})
+	var tab03 = Vue.extend({
+		template: '<p>This is tab03</p>'
+	})
+	var tab04 = Vue.extend({
+		template: '<p>This is tab04</p>'
+	})
+	var tab05 = Vue.extend({
+		template: '<p>This is tab05</p>'
+	})
+	var tab06 = Vue.extend({
+		template: '<p>This is tab06</p>'
+	})
+	var tab07 = Vue.extend({
+		template: '<p>This is tab07</p>'
+	})
+	var tab08 = Vue.extend({
+		template: '<p>This is tab08</p>'
+	})
+	var tab09 = Vue.extend({
+		template: '<p>This is tab09</p>'
+	})
+	new Vue({
+		el: '#div1',
+		data: {
+			list: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+			num: 1,
+			currentView:'tab01'
+		},
+		components:{
+			tab01:tab01,
+			tab02:tab02,
+			tab03:tab03,
+			tab04:tab04,
+			tab05:tab05,
+			tab06:tab06,
+			tab07:tab07,
+			tab08:tab08,
+			tab09:tab09
+			
+		},
+		methods: {
+			addClass(index) {
+				this.num = index;
+				this.currentView = index;
+			}
+		}
+	})
+</script>
